@@ -1,0 +1,19 @@
+{
+  "name": "movie-list-json-server",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "json-server": "npx json-server --watch db.json --port 5000"
+  },
+  "devDependencies": {
+    "vite": "^6.0.1"
+  },
+  "dependencies": {
+    "axios": "^1.7.8",
+    "json-server": "^1.0.0-beta.3"
+  }
+}

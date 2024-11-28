@@ -42,11 +42,16 @@ html {
     border-radius: 5px;
 }
 
+.form > div {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
+}
+
 .form input[type="button"] {
     width: 5rem;
-    display: inline-block;
-    margin: 0 1rem;
-    margin-top: 2rem;
     font-size: 1.2rem;
     line-height: 1.2rem;
 }
@@ -89,7 +94,9 @@ html {
     cursor: pointer;
 }
 
-
+.collapsed {
+    display: none;
+}
 
 @media (min-width: 650px) {
 

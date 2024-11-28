@@ -31,34 +31,24 @@
       "rating": "5.0"
     },
     {
-      "id": "b6ff",
-      "title": "Kalle Anka",
-      "rating": "4.9"
-    },
-    {
-      "id": "79c3",
-      "title": "Kalle Anka",
-      "rating": "4"
-    },
-    {
-      "id": "20bf",
-      "title": "Mupparna",
-      "rating": "7"
-    },
-    {
       "id": "86ab",
       "title": "Ronja Rövare",
       "rating": "2.5"
     },
     {
-      "id": "7c1b",
-      "title": "Superman",
-      "rating": "3.5"
+      "id": "bd33",
+      "title": "Star wars",
+      "rating": "5.0"
     },
     {
-      "id": "99be",
-      "title": "Star wars 3",
-      "rating": "5.0"
+      "title": "Superman",
+      "rating": "3.8",
+      "id": "acba"
+    },
+    {
+      "id": "467c",
+      "title": "Kalle Anka",
+      "rating": "4.9"
     }
   ]
 }

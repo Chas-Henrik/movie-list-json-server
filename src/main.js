@@ -1,5 +1,6 @@
 import { httpPost, httpPut, httpGet, httpGetId, httpDeleteId } from './json_server_api.js';
 
+const formElement = document.getElementById('form-id');
 const moveListContainerElement = document.getElementById('movie-list-id'); 
 const createBtnElement = document.getElementById('create-btn-id');
 const updateBtnElement = document.getElementById('update-btn-id');
@@ -35,6 +36,8 @@ async function selectMovieClick(event) {
             movieContainerElement = clickedElement.parentElement;
             await httpDeleteId(movieContainerElement.dataset.id);
             refreshMovieList();
+            formElement.reset();
+            updateBtnElement.classList.add("collapsed");
             break;
         case 'P':
             movieContainerElement = clickedElement.parentElement;
@@ -42,6 +45,7 @@ async function selectMovieClick(event) {
             titleInputElement.value = movieContainerElement.childNodes[2].innerText;
             ratingInputElement.value = movieContainerElement.childNodes[1].innerText;
             updateBtnElement.dataset.id = movieContainerElement.dataset.id;
+            updateBtnElement.classList.remove("collapsed");
             break;
     }
 

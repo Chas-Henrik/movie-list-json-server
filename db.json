@@ -6,37 +6,7 @@
       "rating": "4.9"
     },
     {
-      "title": "Avedgars",
-      "rating": "4.7",
-      "id": "2"
-    },
-    {
-      "title": "Superman",
-      "rating": "4.8",
-      "id": "3"
-    },
-    {
-      "title": "Batman",
-      "rating": "4.6",
-      "id": "4"
-    },
-    {
-      "id": "fc32",
-      "title": "Avengers",
-      "rating": "4.0"
-    },
-    {
       "id": "f7f7",
-      "title": "Star wars",
-      "rating": "5.0"
-    },
-    {
-      "id": "86ab",
-      "title": "Ronja Rövare",
-      "rating": "2.5"
-    },
-    {
-      "id": "bd33",
       "title": "Star wars",
       "rating": "5.0"
     },
@@ -46,24 +16,39 @@
       "rating": "9.9"
     },
     {
-      "id": "2148",
-      "title": "Mupparna",
-      "rating": "3.9"
+      "id": "e648",
+      "title": "Pippi Långstrump",
+      "rating": "7.0"
     },
     {
       "title": "Kalle Anka",
-      "rating": "4.2",
-      "id": "8722"
+      "rating": "7.7",
+      "id": "f02e"
     },
     {
-      "title": "American Pie",
-      "rating": "3.5",
-      "id": "78e5"
+      "title": "Ronja Rövardotter",
+      "rating": "7.7",
+      "id": "d8c3"
     },
     {
-      "id": "cab6",
-      "title": "American Pie 2",
-      "rating": "3.9"
+      "id": "eef9",
+      "title": "Albert & Herbert",
+      "rating": "6.0"
+    },
+    {
+      "id": "effa",
+      "title": "Titanic",
+      "rating": "8.0"
+    },
+    {
+      "title": "Saltkråkan",
+      "rating": "6.8",
+      "id": "37bb"
+    },
+    {
+      "id": "ff59",
+      "title": "Mupparna",
+      "rating": "5.5"
     }
   ]
 }

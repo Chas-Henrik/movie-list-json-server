@@ -1,17 +1,24 @@
-import { httpPost, httpPut, httpGet, httpGetId, httpDeleteId } from './json_server_api.js';
+import { httpPost, httpPut, httpGet, httpDeleteId } from './json_server_api.js';
 
 const formElement = document.getElementById('form-id');
 const moveListContainerElement = document.getElementById('movie-list-id'); 
+const sortedCheckboxElement = document.getElementById('sorted-checkbox-id'); 
 const createBtnElement = document.getElementById('create-btn-id');
 const updateBtnElement = document.getElementById('update-btn-id');
 const titleInputElement = document.getElementById('title-id');
 const ratingInputElement = document.getElementById('rating-id');
+const pagePrevBtnElement = document.getElementById('page-prev-btn-id');
+const pageNextBtnElement = document.getElementById('page-next-btn-id');
 
-let localMovieList = [];
+let currentPage = 1;
+let lastPage = 1;
 
 createBtnElement.addEventListener('click', createClick);
 updateBtnElement.addEventListener('click', updateClick);
 moveListContainerElement.addEventListener('click', selectMovieClick);
+sortedCheckboxElement.addEventListener('change', refreshMovieList);
+pagePrevBtnElement.addEventListener('click', getPrevPage);
+pageNextBtnElement.addEventListener('click', getNextPage);
 
 async function createClick(event) {
     const data = await httpPost(titleInputElement.value, ratingInputElement.value);
@@ -54,6 +61,20 @@ async function selectMovieClick(event) {
     event.preventDefault();
 }
 
+function getPrevPage(event) {
+    console.log("pagePrev");
+    if(currentPage>1) currentPage--;
+    refreshMovieList();
+    event.preventDefault();
+}
+
+function getNextPage(event) {
+    console.log("pagePrev");
+    if(currentPage < lastPage) currentPage++;
+    refreshMovieList();
+    event.preventDefault();
+}
+
 function populateMovieElement(id, title, rating) {
     const movieContainerElement = document.createElement('div');
     movieContainerElement.classList.add('movie-container');
@@ -72,12 +93,12 @@ function populateMovieElement(id, title, rating) {
 }
 
 async function populateMovieList() {
-    localMovieList = await httpGet();
-    console.log(localMovieList);
-
-    localMovieList.forEach(movie => {
+    const localMovieList = await httpGet(sortedCheckboxElement.checked, currentPage);
+    lastPage = localMovieList.last;
+    localMovieList.data.forEach(movie => {
         populateMovieElement(movie.id, movie.title, movie.rating);
     });
+    updateStatus();
 }
 
 function removeMovieList() {
@@ -86,9 +107,19 @@ function removeMovieList() {
     });
 }
 
-function refreshMovieList() {
+function updateStatus() {
+    currentPage = Math.max(1, Math.min(currentPage, lastPage));
+    const pagePrevBtnDisabled = currentPage <= 1;
+    const pageNextBtnDisabled = currentPage >= lastPage;
+    pagePrevBtnElement.disabled = pagePrevBtnDisabled;
+    pageNextBtnElement.disabled = pageNextBtnDisabled;
+    pagePrevBtnElement.style.cursor = pagePrevBtnDisabled ? "auto" : "pointer";
+    pageNextBtnElement.style.cursor = pageNextBtnDisabled ? "auto" : "pointer";
+}
+
+async function refreshMovieList() {
     removeMovieList();
-    populateMovieList();
+    await populateMovieList();
 }
 
 populateMovieList();

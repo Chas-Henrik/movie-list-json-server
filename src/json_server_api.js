@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 const API_URL = 'http://localhost:5000/movies';
+const API_URL_SORTED_RATING = API_URL + '?_sort=-rating';
 
 const HTTP_HEADER_JSON = {
     headers: {
@@ -12,7 +13,6 @@ const HTTP_HEADER_JSON = {
 export async function httpPost(title, rating) {
     try {
         const dataObj = {title: title, rating: rating};
-        console.log("POST", dataObj);
         const response = await axios.post(API_URL, JSON.stringify(dataObj), HTTP_HEADER_JSON);
         if(response.status !== 201) {
             throw new Error("POST failed");
@@ -26,20 +26,19 @@ export async function httpPost(title, rating) {
 export async function httpPut(id, title, rating) {
     try {
         const dataObj = {title: title, rating: rating};
-        console.log("PUT", dataObj);
         const response = await axios.put(API_URL + '/' + id, JSON.stringify(dataObj), HTTP_HEADER_JSON);
         if(response.status !== 200 && response.status !== 204) {
-            throw new Error("GET failed");
+            throw new Error("PUT failed");
         }
     } catch (error) {
         console.error(error);
     }
 }
 
-export async function httpGet() {
+export async function httpGet(sorted=true, page=1) {
     try {
-        console.log("GET");
-        const response = await axios.get(API_URL);
+        const endpoint = sorted? API_URL_SORTED_RATING + '&_page=' + page : API_URL + '?_page=' + page;
+        const response = await axios.get(endpoint);
         if(response.status !== 200) {
             throw new Error("GET failed");
         }
@@ -51,7 +50,6 @@ export async function httpGet() {
 
 export async function httpGetId(id) {
     try {
-        console.log("GET");
         const response = await axios.get(API_URL + '/' + id);
         if(response.status !== 200) {
             throw new Error("GET failed");
@@ -64,7 +62,6 @@ export async function httpGetId(id) {
 
 export async function httpDeleteId(id) {
     try {
-        console.log("DELETE");
         const response = await axios.delete(API_URL + '/' + id);
         if(response.status !== 200 && response.status !== 204) {
             throw new Error("DELETE failed");

@@ -11,12 +11,12 @@
       "id": "2"
     },
     {
-      "title": "Supermun",
+      "title": "Superman",
       "rating": "4.8",
       "id": "3"
     },
     {
-      "title": "Butman",
+      "title": "Batman",
       "rating": "4.6",
       "id": "4"
     },
@@ -36,9 +36,9 @@
       "rating": "4.9"
     },
     {
-      "id": "d7ae",
-      "title": "Kalle Anka",
-      "rating": "4.9"
+      "title": "Kalle",
+      "rating": "4.9",
+      "id": "d7ae"
     },
     {
       "title": "Kalle Apa",
@@ -51,9 +51,9 @@
       "rating": "4"
     },
     {
-      "id": "abe0",
-      "title": "Mupparna",
-      "rating": "7"
+      "title": "Mopparna",
+      "rating": "7.4",
+      "id": "abe0"
     },
     {
       "id": "20bf",

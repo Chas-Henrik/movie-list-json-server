@@ -6,7 +6,6 @@ const updateBtnElement = document.getElementById('update-btn-id');
 const titleInputElement = document.getElementById('title-id');
 const ratingInputElement = document.getElementById('rating-id');
 
-
 let localMovieList = [];
 
 createBtnElement.addEventListener('click', createClick);
@@ -20,29 +19,19 @@ function createClick(event) {
 
 async function updateClick(event) {
     const btnElement = event.target;
-    const index = localMovieList.indexOf(localMovieList.find(movie => movie.id === btnElement.dataset.id));
-    if (index === -1) {
-        console.error("Movie not found");
-        return;
-    }
-    localMovieList[index].title = titleInputElement.value;
-    localMovieList[index].rating = ratingInputElement.value;
-    
+    console.log("btnElement.dataset.id", btnElement.dataset.id);
     const response = await httpPut(btnElement.dataset.id, titleInputElement.value, ratingInputElement.value);
-    console.log("renderMovieList");
-    renderMovieList();
+    refreshMovieList();
     event.preventDefault();
 }
 
 function selectMovieClick(event) {
-    const element = event.target;
-    if(element.tagName === 'DIV') {
-        const movieId = element.dataset.id;
-        console.log("movieId", movieId);
-        titleInputElement.value = element.childNodes[0].innerText;
-        ratingInputElement.value = element.childNodes[1].innerText;
-        updateBtnElement.dataset.id = movieId;
-    }
+    let element = (event.target.tagName === 'P')? event.target.parentElement : event.target;
+    const movieId = element.dataset.id;
+
+    titleInputElement.value = element.childNodes[0].innerText;
+    ratingInputElement.value = element.childNodes[1].innerText;
+    updateBtnElement.dataset.id = movieId;
     event.preventDefault();
 }
 
@@ -51,8 +40,8 @@ function populateMovieElement(id, title, rating) {
     movieContainerElement.classList.add('movie-container');
     movieContainerElement.dataset.id = id;
     moveListContainerElement.appendChild(movieContainerElement);
-    const movieTitleElement = document.createElement('div');
-    const movieRatingElement = document.createElement('div');
+    const movieTitleElement = document.createElement('p');
+    const movieRatingElement = document.createElement('p');
     movieTitleElement.innerText = title;
     movieRatingElement.innerText = rating;
     movieContainerElement.appendChild(movieTitleElement);
@@ -68,14 +57,15 @@ async function populateMovieList() {
     });
 }
 
-function renderMovieList() {
-    const listElements = Array.from(moveListContainerElement.children);
-    for (let i = 0; i < listElements.length && i < localMovieList.length; i++) {
-        const movieListItemChildrenArr = Array.from(listElements[i].children);
-        listElements[i].dataset.id = localMovieList[i].id;
-        movieListItemChildrenArr[0].innerText = localMovieList[i].title;
-        movieListItemChildrenArr[1].innerText = localMovieList[i].rating;
-    }
+function removeMovieList() {
+    Array.from(moveListContainerElement.children).forEach(child => {
+        moveListContainerElement.removeChild(child);
+    });
+}
+
+function refreshMovieList() {
+    removeMovieList();
+    populateMovieList();
 }
 
 populateMovieList();

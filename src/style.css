@@ -53,7 +53,7 @@ html {
 
 .movie-list {
     width: 40%;
-    display: flex;
+    display: grid;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -67,12 +67,17 @@ html {
     padding: 0.5rem 1rem;
     font-size: 1.8rem;
     line-height: 1.8rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 5fr;
     border: 2px solid #000;
     border-bottom: none;
     background-color: rgb(191, 253, 247);
+}
+
+.movie-delete-btn {
+    width: 1.5rem;
+    font-size: 1.0rem;
+    line-height: 1.0rem;
 }
 
 .movie-container:last-child {

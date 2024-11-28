@@ -12,8 +12,9 @@ createBtnElement.addEventListener('click', createClick);
 updateBtnElement.addEventListener('click', updateClick);
 moveListContainerElement.addEventListener('click', selectMovieClick);
 
-function createClick(event) {
-    httpPost(titleInputElement.value, ratingInputElement.value);
+async function createClick(event) {
+    await httpPost(titleInputElement.value, ratingInputElement.value);
+    refreshMovieList();
     event.preventDefault();
 }
 
@@ -25,13 +26,25 @@ async function updateClick(event) {
     event.preventDefault();
 }
 
-function selectMovieClick(event) {
-    let element = (event.target.tagName === 'P')? event.target.parentElement : event.target;
-    const movieId = element.dataset.id;
+async function selectMovieClick(event) {
+    let clickedElement = event.target;
+    let movieContainerElement;
 
-    titleInputElement.value = element.childNodes[0].innerText;
-    ratingInputElement.value = element.childNodes[1].innerText;
-    updateBtnElement.dataset.id = movieId;
+    switch(clickedElement.tagName) {
+        case 'BUTTON':
+            movieContainerElement = clickedElement.parentElement;
+            await httpDeleteId(movieContainerElement.dataset.id);
+            refreshMovieList();
+            break;
+        case 'P':
+            movieContainerElement = clickedElement.parentElement;
+        default:
+            titleInputElement.value = movieContainerElement.childNodes[2].innerText;
+            ratingInputElement.value = movieContainerElement.childNodes[1].innerText;
+            updateBtnElement.dataset.id = movieContainerElement.dataset.id;
+            break;
+    }
+
     event.preventDefault();
 }
 
@@ -40,12 +53,16 @@ function populateMovieElement(id, title, rating) {
     movieContainerElement.classList.add('movie-container');
     movieContainerElement.dataset.id = id;
     moveListContainerElement.appendChild(movieContainerElement);
-    const movieTitleElement = document.createElement('p');
+    const movieDeleteButton = document.createElement('button');
     const movieRatingElement = document.createElement('p');
+    const movieTitleElement = document.createElement('p');
+    movieDeleteButton.innerText = 'X';
+    movieDeleteButton.classList.add('movie-delete-btn');
     movieTitleElement.innerText = title;
     movieRatingElement.innerText = rating;
-    movieContainerElement.appendChild(movieTitleElement);
+    movieContainerElement.appendChild(movieDeleteButton);
     movieContainerElement.appendChild(movieRatingElement);
+    movieContainerElement.appendChild(movieTitleElement);
 }
 
 async function populateMovieList() {

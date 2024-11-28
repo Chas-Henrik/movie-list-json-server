@@ -14,15 +14,17 @@ updateBtnElement.addEventListener('click', updateClick);
 moveListContainerElement.addEventListener('click', selectMovieClick);
 
 async function createClick(event) {
-    await httpPost(titleInputElement.value, ratingInputElement.value);
+    const data = await httpPost(titleInputElement.value, ratingInputElement.value);
     refreshMovieList();
+    updateBtnElement.dataset.id = data.id;
+    updateBtnElement.classList.remove("collapsed");
     event.preventDefault();
 }
 
 async function updateClick(event) {
     const btnElement = event.target;
     console.log("btnElement.dataset.id", btnElement.dataset.id);
-    const response = await httpPut(btnElement.dataset.id, titleInputElement.value, ratingInputElement.value);
+    await httpPut(btnElement.dataset.id, titleInputElement.value, ratingInputElement.value);
     refreshMovieList();
     event.preventDefault();
 }

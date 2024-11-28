@@ -17,6 +17,7 @@ export async function httpPost(title, rating) {
         if(response.status !== 201) {
             throw new Error("POST failed");
         }
+        return response.data;
     } catch (error) {
         console.error(error);
     }

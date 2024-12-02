@@ -12,13 +12,13 @@
   <body>
     <form action="" id='form-id' class="form">
       <h2 class="form-heading">Rated Movie</h2>
-      <input type="text" id='title-id' name='title' placeholder="Title" required>
+      <input type="text" id='title-id' name='title' placeholder="Title" minlength="1" maxlength="40" required>
       <input type="number" id='rating-id' name='rating' placeholder="Rating" min=0 max=10 step=0.1 required>
       <label for="sorted-checkbox-id"><input type="checkbox" id='sorted-checkbox-id' name='sorted' checked>Sorted</label>
       <div>
-        <input type="submit" id='create-btn-id' value="Create">
-        <input type="button" id='update-btn-id' value="Update" disabled>
-        <input type="button" id='reset-btn-id' value="Reset" disabled>
+        <button type="submit" id='create-btn-id'>Create</button>
+        <button type="button" id='update-btn-id' disabled>Update</button>
+        <button type="reset" id='reset-btn-id' disabled>Reset</button>
       </div>
     </form>
     <div class="page-buttons">

@@ -6,9 +6,9 @@
       "rating": "4.9"
     },
     {
-      "id": "f7f7",
-      "title": "Star wars",
-      "rating": "5.0"
+      "title": "Star Wars",
+      "rating": "5.0",
+      "id": "f7f7"
     },
     {
       "id": "8b5b",
@@ -21,11 +21,6 @@
       "rating": "7.0"
     },
     {
-      "title": "Kalle Anka",
-      "rating": "7.7",
-      "id": "f02e"
-    },
-    {
       "title": "Ronja Rövardotter",
       "rating": "7.7",
       "id": "d8c3"
@@ -36,9 +31,9 @@
       "rating": "6.0"
     },
     {
-      "id": "effa",
       "title": "Titanic",
-      "rating": "8.0"
+      "rating": "8.5",
+      "id": "effa"
     },
     {
       "title": "Saltkråkan",
@@ -61,11 +56,6 @@
       "rating": "5.5"
     },
     {
-      "title": "Kalle Anka",
-      "rating": "9.7",
-      "id": "5ffc"
-    },
-    {
       "title": "Transformers",
       "rating": "4.8",
       "id": "f235"
@@ -79,6 +69,11 @@
       "id": "0138",
       "title": "Dirty Harry",
       "rating": "5.6"
+    },
+    {
+      "id": "4432",
+      "title": "Kalle Anka",
+      "rating": "5.8"
     }
   ]
 }

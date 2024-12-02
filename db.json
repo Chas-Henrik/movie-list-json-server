@@ -46,9 +46,39 @@
       "id": "37bb"
     },
     {
-      "id": "ff59",
+      "id": "b6d6",
+      "title": "Karl Bertils Julafton",
+      "rating": "9.0"
+    },
+    {
+      "id": "f00d",
+      "title": "Spiderman",
+      "rating": "4.7"
+    },
+    {
+      "id": "da32",
       "title": "Mupparna",
       "rating": "5.5"
+    },
+    {
+      "title": "Kalle Anka",
+      "rating": "9.7",
+      "id": "5ffc"
+    },
+    {
+      "title": "Transformers",
+      "rating": "4.8",
+      "id": "f235"
+    },
+    {
+      "id": "1333",
+      "title": "Harry Potter",
+      "rating": "7.5"
+    },
+    {
+      "id": "0138",
+      "title": "Dirty Harry",
+      "rating": "5.6"
     }
   ]
 }
